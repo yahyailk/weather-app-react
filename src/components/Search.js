@@ -21,11 +21,11 @@ const Search = () => {
                 <input type="text" placeholder='Search city...' maxLength={25} value={search} onChange={(e) => searchCity(e.target.value)} className={search.length >= 1 ? "border-radius-adjust" : ""}/>
                 <FontAwesomeIcon icon={faMagnifyingGlass} className="search-logo"/>
             </div>
-            <ul className={search.length >= 1 ? "" : "none"}>
+            <ul className={search.length >= 1 ? "" : "none"} onClick={(e) => getCity(e.target.id)}>
                 {
                     cities.filter((city) => city.replace(/İ/g,"i").toLowerCase().includes(search.replace(/İ/g,"i").toLowerCase()))
                     .map((city, index) => {
-                        return <li key={index} onClick={() => getCity(city)}>{city}</li>
+                        return <li key={index} id={city}>{city}</li>
                     })
                 }
             </ul>
